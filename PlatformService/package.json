@@ -1,0 +1,8 @@
+{
+  "name": "platform-api"
+  ,"version": "platform-api"
+  ,"scripts": {
+     "start": "dotnet run",
+     "watch": "dotnet watch run --urls 'http://localhost:5000'"
+  }
+}
