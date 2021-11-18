@@ -27,16 +27,16 @@ namespace PlatformService.SyncDataServices.Http
                 "application/json"
             );
 
-            var response =
-                await _httpClient.PostAsync($"{_configuration["CommandService"]}/api/c/platform", httpContent);
-            
+            var url = $"{_configuration["CommandService"]}/api/c/platforms";
+            var response = await _httpClient.PostAsync(url, httpContent);
+
             if (response.IsSuccessStatusCode)
             {
                 Console.WriteLine("✉️ --> Sync POST to CommandService was OK!");
             }
             else
             {
-                Console.WriteLine("✉️ --> Sync POST to CommandService was NOT OK!");
+                Console.WriteLine($"✉️ --> Sync POST to CommandService was NOT OK! {url} - {response.StatusCode}");
             }
         }
     }
