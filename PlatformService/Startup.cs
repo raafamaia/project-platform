@@ -32,9 +32,10 @@ namespace PlatformService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            Console.WriteLine($"💻 --> IsProduction: {_env.IsProduction()}");
             if (_env.IsProduction())
             {
-                Console.WriteLine("🤖 --> Using Sql Server DB !");
+                Console.WriteLine("🤖 --> Using Sql Server DB!");
                 services.AddDbContext<AppDbContext>(opt =>
                     opt.UseSqlServer(Configuration.GetConnectionString("PlatformsConn")));
             }
@@ -77,7 +78,7 @@ namespace PlatformService
 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
 
-            PrepDb.PrepPopulation(app);
+            PrepDb.PrepPopulation(app, _env.IsProduction());
         }
     }
 }
