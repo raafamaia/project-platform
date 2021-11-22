@@ -20,7 +20,7 @@ namespace PlatformService.Data
         {
             if (!context.Platforms.Any())
             {
-                Console.WriteLine("▶️ Seeding data...");
+                Console.WriteLine("🌱 --> Seeding data...");
                 context.Platforms.AddRange(
                         new Platform() {
                             Name = "dotnet", 
